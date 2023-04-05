@@ -41,6 +41,7 @@ class PrometheusConnect:
     def __init__(
         self,
         url: str = "http://127.0.0.1:9090",
+        proxy: dict = None,
         headers: dict = None,
         disable_ssl: bool = False,
         retry: Retry = None,
@@ -52,6 +53,7 @@ class PrometheusConnect:
 
         self.headers = headers
         self.url = url
+        self.proxy = proxy
         self.prometheus_host = urlparse(self.url).netloc
         self._all_metrics = None
         self.ssl_verification = not disable_ssl
@@ -66,6 +68,7 @@ class PrometheusConnect:
         self.auth = auth
 
         self._session = requests.Session()
+        if self.proxy is not None: self._session.proxies = self.proxy
         self._session.mount(self.url, HTTPAdapter(max_retries=retry))
 
     def check_prometheus_connection(self, params: dict = None) -> bool:
