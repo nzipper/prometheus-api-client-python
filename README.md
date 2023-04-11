@@ -42,3 +42,27 @@ query_df = MetricRangeDataFrame(query)
 ```
 
 For more functions included in the `prometheus-api-client` library, please refer to this [documentation.](https://prometheus-api-client-python.readthedocs.io/en/master/source/prometheus_api_client.html)
+
+#### Determining Prometheus Queries
+
+To obtain the Prometheus queries required to request relevant quantities takes a bit of troubleshooting. Refer to the [cms-cactus documentation](https://gitlab.cern.ch/cms-cactus/ops/monitoring/prometheus/-/wikis/Trigger-queries) for the basics. Another good way to check if you have a viable query is to test it on the [online console](http://l1ts-prometheus.cms:9090) (provided your P5 tunnel is set up).
+
+Finally, the quickest way to determine a query for a general quantity-of-interest is directly from Grafana (again, provided your P5 tunnel is set up). Shown in in the images below, you can 1) Navigate to any Grafana page with a metric you want. 2) Click the descriptor to get the dropdown menu, then click "Inspect", then "Panel JSON" 3) Navigate to the "expr" portion of the code and copy the value as your query. It may take some further formatting and troubleshooting, but this should give you the values you are interested in.
+
+##### 1) 
+<p align="center">
+<img width="500" alt="Screen Shot 2023-04-11 at 08 26 12" src="https://user-images.githubusercontent.com/52294237/231077143-a8b87dd3-b694-450a-8599-ce979fa6f263.png">
+</p>
+ 
+##### 2) 
+<p align="center">
+<img width="500" alt="Screen Shot 2023-04-11 at 08 26 48" src="https://user-images.githubusercontent.com/52294237/231077231-06a1492f-47fd-424c-9f6a-c6a259772e3b.png">
+</p>
+
+##### 3)
+<p align="center">
+<img width="500" alt="Screen Shot 2023-04-11 at 08 27 13" src="https://user-images.githubusercontent.com/52294237/231077303-e34f08b6-6815-46a6-ae57-a3d254e5dc21.png">
+</p>
+
+
+
