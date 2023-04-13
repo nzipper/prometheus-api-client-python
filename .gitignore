@@ -3,7 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 **/.history
-
+**/.DS_Store
+monitoring_plots/
 # C extensions
 *.so
 
